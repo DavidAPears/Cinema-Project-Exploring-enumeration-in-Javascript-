@@ -62,6 +62,16 @@ describe('Cinema', function () {
     assert.deepStrictEqual(actual, 622);
   });
 
+
+  it('should be able to filter films by genre', function () {
+    const actual = cinema.getFilmByProperty("genre", 'sci-fi');
+    assert.deepStrictEqual(actual[0], bladeRunner);
+  });
+
+  it('should be able to filter films by year', function () {
+    const actual = cinema.getFilmByProperty("year", 2017);
+    assert.deepStrictEqual(actual, [bladeRunner, dunkirk, trainspotting]);
+  });
 });
 
 module.exports = Cinema;
