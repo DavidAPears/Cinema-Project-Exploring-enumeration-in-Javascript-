@@ -22,10 +22,26 @@ Cinema.prototype.hasFilmByYear = function (year) {
 };
 
 Cinema.prototype.filmOverDuration = function (duration) {
-  const result = this.films.map(film => film.length > duration);
-  if (result.length === this.films.length){
-    return true;
-  }
+  const result = this.films.every(film => film.length > duration);
+  return result;
 };
+
+Cinema.prototype.totalRunningOfAllFilms = function () {
+  let filmLengths = this.films.map(film => film.length);
+ return filmLengths.reduce((total, film) => {
+    return total + film;
+  });
+
+};
+
+Cinema.prototype.getFilmByProperty = function (property, value) {
+  return this.films.filter(film => film[property] === value);
+};
+
+// const getEvens = function () {
+//   return numbers.filter((number) => {
+//     return number % 2 === 0;
+//   });
+// }
 
 module.exports = Cinema;
